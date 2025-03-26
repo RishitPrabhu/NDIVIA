@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | Ndivia</title>
+    <link id="theme" rel="stylesheet" href="../dark.css">
+</head>
+<body>
+
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+        <button onclick="home()">Dashboard</button>
+        <button style="margin-top: 0.5rem;" type="button" id="toggleMode" onclick="changeMode()">Toggle Light Mode</button>
+    </header>
+
+
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>John Doe</td><td>98</td></tr>
+                <tr><td>2</td><td>Jane Smith</td><td>95</td></tr>
+                <tr><td>3</td><td>Mike Johnson</td><td>92</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        function home(){
+            window.location.href = "../homepage/home.html";
+        }
+
+        
+        function login(){
+            window.location.href = "../index.html";
+        }
+
+        function changeMode() {
+            let theme = document.getElementById('theme');
+            let themeButton = document.getElementById('toggleMode');
+
+            if (theme.getAttribute('href') === '../light.css') {
+                theme.setAttribute('href', '../dark.css');
+                themeButton.textContent = 'Toggle Light Mode';
+            } else {
+                theme.setAttribute('href', '../light.css');
+                themeButton.textContent = 'Toggle Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>

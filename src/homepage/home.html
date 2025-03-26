@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ndivia | Home</title>
+    <link id="theme" rel="stylesheet" href="../dark.css">
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+        <h2>Ndivia</h2>
+        <button style="margin-top: 0.5rem;" type="button" id="toggleMode" onclick="changeMode()">Toggle Light Mode</button>
+    </header>
+    
+
+    <div class="container">
+        <h2>Welcome to Ndivia</h2>
+        <p>Your ultimate platform for interactive learning, quizzes, and revision.</p>
+
+        <div class="buttons">
+            <button>Take Quiz</button>
+            <button>Revise PDF</button>
+            <button onclick="leaderboard()">Leaderboard</button>
+            <button onclick="login()">Logout</button>
+        </div>
+
+        <section class="how-it-works">
+            <h3>How It Works</h3>
+            <ul>
+                <li>📚 <strong>Revise:</strong> Upload PDFs, and our AI generates key points for quick review.</li>
+                <li>🎯 <strong>Take Quizzes:</strong> Test your knowledge with interactive quizzes.</li>
+                <li>🏆 <strong>Leaderboard:</strong> Compete with others and track your progress.</li>
+            </ul>
+        </section>
+
+        <section class="features">
+            <h3>Why Use Ndivia?</h3>
+            <div class="feature-box">
+                <div class="feature">
+                    <h4>🚀 Interactive Learning</h4>
+                    <p>Engage with quizzes and AI-powered revision tools.</p>
+                </div>
+                <div class="feature">
+                    <h4>🔍 Smart Revision</h4>
+                    <p>Summarize your study material efficiently with AI.</p>
+                </div>
+                <div class="feature">
+                    <h4>🌙 Dark Mode</h4>
+                    <p>Toggle dark mode for comfortable late-night studying.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Ndivia. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        function login(){
+            window.location.href = "../index.html";
+        }
+
+        function leaderboard(){
+            window.location.href = "../leaderboard/leaderboard.html";
+        }
+
+        function changeMode() {
+            let theme = document.getElementById('theme');
+            let themeButton = document.getElementById('toggleMode');
+
+            if (theme.getAttribute('href') === '../light.css') {
+                theme.setAttribute('href', '../dark.css');
+                themeButton.textContent = 'Toggle Light Mode';
+            } else {
+                theme.setAttribute('href', '../light.css');
+                themeButton.textContent = 'Toggle Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>

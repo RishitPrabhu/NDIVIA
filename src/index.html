@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Ndivia</title>
+    <link id="theme" rel="stylesheet" href="./dark.css">
+</head>
+<body>
+    <form class="container" onsubmit="return false;">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email" id="email" required>
+        <input type="password" placeholder="Password" id="password" required>
+        <button type="button" onclick="login()">Login</button>
+        <p id="greet"></p>
+        <button type="button" id="toggleMode" onclick="changeMode()">Toggle Light Mode</button>
+    </form>
+
+    <script>
+        function login() {
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let greet = document.getElementById("greet");
+
+            if (email !== "") {
+                greet.textContent = `Hello ${email}, nice to meet you.`;
+            }
+
+            if (email === "rishit@e.com" && password === "123") {
+                console.log("Login Successful!");
+                alert("Login Successful!");
+
+                window.location.href = "./homepage/home.html";
+            } else {
+                console.log("Invalid credentials");
+                alert("Invalid email or password.");
+            }
+        }
+
+        function changeMode() {
+            let theme = document.getElementById('theme');
+            let themeButton = document.getElementById('toggleMode');
+
+            if (theme.getAttribute('href') === './light.css') {
+                theme.setAttribute('href', './dark.css');
+                themeButton.textContent = 'Toggle Light Mode';
+            } else {
+                theme.setAttribute('href', './light.css');
+                themeButton.textContent = 'Toggle Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>
