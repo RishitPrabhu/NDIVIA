@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz | Ndivia</title>
+    <link id="theme" rel="stylesheet" href="../dark.css">
+</head>
+<body>
+
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+        <button onclick="home()">Dashboard</button>
+        <button style="margin-top: 0.5rem;" type="button" id="toggleMode" onclick="changeMode()">Toggle Light Mode</button>
+    </header>
+
+    <div class="quiz-container">
+        <h2 id="question">Loading question...</h2>
+        <div id="answers"></div>
+        <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <script>
+
+        function home(){
+            window.location.href = "../homepage/home.html";
+        }
+
+        function changeMode() {
+            let theme = document.getElementById('theme');
+            let themeButton = document.getElementById('toggleMode');
+
+            if (theme.getAttribute('href') === '../light.css') {
+                theme.setAttribute('href', '../dark.css');
+                themeButton.textContent = 'Toggle Light Mode';
+            } else {
+                theme.setAttribute('href', '../light.css');
+                themeButton.textContent = 'Toggle Dark Mode';
+            }
+        }
+
+        const quizData = [
+            {
+                question: "What is the capital of France?",
+                options: ["Berlin", "Madrid", "Paris", "Rome"],
+                answer: "Paris"
+            },
+            {
+                question: "Which language runs in a web browser?",
+                options: ["Python", "Java", "C++", "JavaScript"],
+                answer: "JavaScript"
+            },
+            {
+                question: "Who developed the theory of relativity?",
+                options: ["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Marie Curie"],
+                answer: "Albert Einstein"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const questionElement = document.getElementById("question");
+            const answersElement = document.getElementById("answers");
+            const nextButton = document.getElementById("next-btn");
+
+            nextButton.style.display = "none";  // Hide next button
+            answersElement.innerHTML = ""; // Clear previous answers
+
+            const currentQuestion = quizData[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.onclick = () => checkAnswer(option);
+                answersElement.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedOption) {
+            const currentQuestion = quizData[currentQuestionIndex];
+            const nextButton = document.getElementById("next-btn");
+
+            if (selectedOption === currentQuestion.answer) {
+                alert("Correct!");
+                score++;
+            } else {
+                alert(`Wrong! The correct answer is: ${currentQuestion.answer}`);
+            }
+
+            nextButton.style.display = "block"; // Show next button
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                document.querySelector(".quiz-container").innerHTML = `<h2>Quiz Completed!</h2><p>Your Score: ${score}/${quizData.length}</p>`;
+            }
+        }
+
+        loadQuestion(); // Load first question
+    </script>
+
+</body>
+</html>

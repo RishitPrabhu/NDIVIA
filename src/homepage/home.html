@@ -18,7 +18,7 @@
         <p>Your ultimate platform for interactive learning, quizzes, and revision.</p>
 
         <div class="buttons">
-            <button>Take Quiz</button>
+            <button onclick="quiz()">Take Quiz</button>
             <button>Revise PDF</button>
             <button onclick="leaderboard()">Leaderboard</button>
             <button onclick="login()">Logout</button>
@@ -53,10 +53,14 @@
     </div>
 
     <footer>
-        <p>© 2025 Ndivia. All rights reserved.</p>
+        <p>Footer to be added...</p>
     </footer>
 
     <script>
+
+    function quiz(){
+            window.location.href = "../quiz/quiz.html";
+        }
 
         function login(){
             window.location.href = "../index.html";
